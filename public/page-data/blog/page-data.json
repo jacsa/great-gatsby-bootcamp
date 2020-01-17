@@ -1,0 +1,1 @@
+{"componentChunkName":"component---src-pages-blog-js","path":"/blog/","result":{"data":{"allMarkdownRemark":{"edges":[{"node":{"frontmatter":{"date":"2020-01-15","title":"The Great Gatsby Bootcamp"}}},{"node":{"frontmatter":{"date":"2020-01-16","title":"React"}}}]}},"pageContext":{"isCreatedByStatefulCreatePages":true}}}
