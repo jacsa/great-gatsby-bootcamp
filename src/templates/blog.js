@@ -1,10 +1,30 @@
 import React from 'react'
 import Layout from '../components/layout'
+import { graphql } from 'gatsby';
 
-const Blog = () => {
-    return(
+export const query = graphql`query ($slug: String){
+    markdownRemark (fields: {
+    slug: {
+      eq : $slug
+    }
+  }) {
+    frontmatter {
+      title
+      date
+    }
+    excerpt
+    html
+  }
+}`;
+
+
+const Blog = ({data}) => {
+    const html = data.markdownRemark.html;
+    return (
         <Layout>
-            This is the default template
+            <h1>{data.markdownRemark.frontmatter.title}</h1>
+            <p>{data.markdownRemark.frontmatter.date}</p>
+            <div dangerouslySetInnerHTML={{ __html : html }}></div>
         </Layout>
     )
 }

@@ -1,1 +1,1 @@
-{"componentChunkName":"component---src-templates-blog-js","path":"/blog/react","result":{"pageContext":{"isCreatedByStatefulCreatePages":false,"slug":"react"}}}
+{"componentChunkName":"component---src-templates-blog-js","path":"/blog/react","result":{"data":{"markdownRemark":{"frontmatter":{"title":"React","date":"2020-01-16"},"excerpt":"In this post you will learn React.","html":"<p>In this post you will learn React.</p>"}},"pageContext":{"isCreatedByStatefulCreatePages":false,"slug":"react"}}}
