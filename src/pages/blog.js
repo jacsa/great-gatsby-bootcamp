@@ -4,24 +4,43 @@ import { Link, graphql, useStaticQuery } from 'gatsby'
 import blogStyles from './blog.module.scss'
 
 const BlogPage = () => {
+    // const data = useStaticQuery(graphql`
+    //         query  {
+    //             allMarkdownRemark {
+    //                 edges {
+    //                     node {
+    //                         frontmatter {
+    //                             date
+    //                             title
+    //                         }
+    //                         fields {
+    //                             slug
+    //                         }
+    //                     }
+
+    //                 }
+    //             }
+    //         }
+    //     `);
+
     const data = useStaticQuery(graphql`
-            query  {
-                allMarkdownRemark {
-                    edges {
-                        node {
-                            frontmatter {
-                                date
-                                title
-                            }
-                            fields {
-                                slug
-                            }
-                        }
-                        
+        query  {
+            allContentfulBlogPost (sort:
+            {
+                fields : publishedDate,
+                order: DESC
+            }) {
+                edges {
+                    node {
+                        slug
+                        title
+                        publishedDate(formatString:"MMMM Do, YYYY")
                     }
                 }
             }
-        `);
+        }
+    `);
+
     return (
         <div>
             <Layout >
@@ -30,12 +49,12 @@ const BlogPage = () => {
                 </h1>
                 <p>Post will show a list of posts</p>
                 <ol className={blogStyles.posts}>
-                    {data.allMarkdownRemark.edges.map(({ node: { frontmatter: { title, date }, fields:{ slug } } }, index) => {
+                    {data.allContentfulBlogPost.edges.map(({ node: { title, publishedDate, slug } }, index) => {
                         return (
                             <li key={index} className={blogStyles.post}>
                                 <Link to={`blog/${slug}`}>
                                     <h2>{title}</h2>
-                                    <p>{date}</p>
+                                    <p>{publishedDate}</p>
                                 </Link>
                             </li>
                         );
