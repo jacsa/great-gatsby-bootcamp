@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{"Cuy+":function(e,a,t){"use strict";t.r(a);var n=t("q1tI"),l=t.n(n),c=t("Bl7J"),r=t("hIod");a.default=function(){return l.a.createElement("div",null,l.a.createElement(c.a,null,l.a.createElement(r.a,{title:"Contact"}),l.a.createElement("h1",null,"Contact"),l.a.createElement("p",null,"Contactme on ",l.a.createElement("a",{href:"https://www.facebook.com/javier.salazarcardenas",target:"_blank"}," jacsa77@gmail.com "))))}}}]);
+//# sourceMappingURL=component---src-pages-contact-js-09b360ccbb962b1c3978.js.map
