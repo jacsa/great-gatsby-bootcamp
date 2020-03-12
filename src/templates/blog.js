@@ -3,18 +3,8 @@ import Layout from '../components/layout'
 import { graphql } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Head from '../components/head'
-
-export const query = graphql`query ($slug: String){
-    contentfulBlogPost (slug: { eq : $slug }) {
-      title
-      publishedDate(formatString:"MMMM Do, YYYY")
-      body {
-        json
-      }
-    }
-  }`;
-
-const Blog = ({data}) => {
+//contentfulBlogPost (slug: { eq : $slug }) {
+const Blog = ({data, location}) => {
     const  { json } = data.contentfulBlogPost.body;
     const options = {
       renderNode:  {
@@ -26,7 +16,7 @@ const Blog = ({data}) => {
       }
     };
     return (
-        <Layout>
+        <Layout data={data} location={location}>
             <Head title={data.contentfulBlogPost.title} />
             <h1>{data.contentfulBlogPost.title}</h1>
             <p>{data.contentfulBlogPost.publishedDate}</p>
@@ -36,3 +26,21 @@ const Blog = ({data}) => {
 }
 
 export default Blog;
+
+export const query = graphql`query ($id: String){
+  site {
+      siteMetadata {
+        languages {
+          defaultLangKey
+          langs
+        }
+      }
+    }
+  contentfulBlogPost (id: { eq: $id }) {
+      title
+      publishedDate(formatString:"MMMM Do, YYYY")
+      body {
+        json
+      }
+    }
+  }`;

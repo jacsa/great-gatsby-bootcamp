@@ -5,7 +5,6 @@
  */
 const languages = require('./src/data/languages');
 module.exports = {
-  /* Your site config here */
   pathPrefix: `/jacsa`,
   siteMetadata: {
     title: 'Full Stack Bootcamp',
@@ -49,8 +48,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-contentful',
       options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+        accessToken: "2l5iZa7lfqFZlA5vylbzKeajWvXKHBLFV_GYoGHMVGs",
+        spaceId: "kt97pyvob2su"
       }
     }
 

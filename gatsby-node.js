@@ -1,4 +1,5 @@
 const path = require('path')
+const slash = require(`slash`)
 
 exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions
@@ -14,19 +15,30 @@ exports.createPages = async ({ graphql, actions }) => {
                     edges {
                         node {
                             slug
+                            id
+                            contentful_id
+                            node_locale
                         }
                     }
                 }
         }
     `)
-    console.log(resp.data)
-    resp.data.allContentfulBlogPost.edges.forEach(({ node: { slug } }) => {
+    resp.data.allContentfulBlogPost.edges.forEach(({ node: { contentful_id, id, node_locale, slug } }) => {
+        // createPage({
+        //     component: blogTemplate,
+        //     path: `/blog/${slug}`,
+        //     context: {
+        //         slug
+        //     }
+        // })
+        console.log(`/${node_locale}/blog/${contentful_id}/`)
         createPage({
+            path: `/${node_locale}/blog/${contentful_id}/`,
             component: blogTemplate,
-            path: `/blog/${slug}`,
             context: {
-                slug
-            }
+                id: id,
+                contentful_id: contentful_id,
+            },
         })
     });
 
