@@ -27,6 +27,7 @@ class TemplateWrapper extends Component {
       const data = this.props.data;
       const location = this.props.location;
       const url = location.pathname;
+      
 
       const { langs, defaultLangKey } = data.site.siteMetadata.languages;
       this.langKey = getCurrentLangKey(langs, defaultLangKey, url);

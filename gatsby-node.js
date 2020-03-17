@@ -34,7 +34,7 @@ exports.createPages = async ({ graphql, actions }) => {
         console.log(`/${node_locale}/blog/${contentful_id}/`)
         createPage({
             path: `/${node_locale}/blog/${contentful_id}/`,
-            component: blogTemplate,
+            component: slash(blogTemplate),
             context: {
                 id: id,
                 contentful_id: contentful_id,
