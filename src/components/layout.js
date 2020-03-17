@@ -22,20 +22,22 @@ class TemplateWrapper extends Component {
   constructor(props) {
     super(props);
     
-    this.children = this.props.children;
-    const data = this.props.data;
-    const location = this.props.location;
-    const url = location.pathname;
+    if (typeof window !== 'undefined') {
+      this.children = this.props.children;
+      const data = this.props.data;
+      const location = this.props.location;
+      const url = location.pathname;
 
-    const { langs, defaultLangKey } = data.site.siteMetadata.languages;
-    this.langKey = getCurrentLangKey(langs, defaultLangKey, url);
-    this.homeLink = `/${this.langKey}/`;
-    this.langsMenu = getLangs(langs, this.langKey, getUrlForLang(this.homeLink, url));
+      const { langs, defaultLangKey } = data.site.siteMetadata.languages;
+      this.langKey = getCurrentLangKey(langs, defaultLangKey, url);
+      this.homeLink = `/${this.langKey}/`;
+      this.langsMenu = getLangs(langs, this.langKey, getUrlForLang(this.homeLink, url));
 
-    // get the appropriate message file based on langKey
-    // at the moment this assumes that langKey will provide us
-    // with the appropriate language code
-    this.i18nMessages = require(`../data/messages/${this.langKey}`);
+      // get the appropriate message file based on langKey
+      // at the moment this assumes that langKey will provide us
+      // with the appropriate language code
+      this.i18nMessages = require(`../data/messages/${this.langKey}`);
+    }
   }
   render() {
     return (

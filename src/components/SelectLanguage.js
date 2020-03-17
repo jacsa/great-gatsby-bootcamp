@@ -4,7 +4,7 @@ import Link from 'gatsby-link';
 import { FormattedMessage } from 'react-intl';
 
 const SelectLanguage = (props) => {
-  const links = props.langs.map(lang =>
+  const links = props.langs && props.langs.map(lang =>
     <Link to={lang.link} key={lang.langKey} style={{
       color: 'white'
     }}>
