@@ -33,7 +33,9 @@ class TemplateWrapper extends Component {
       this.langKey = getCurrentLangKey(langs, defaultLangKey, url);
       this.homeLink = `/${this.langKey}/`;
       this.langsMenu = getLangs(langs, this.langKey, getUrlForLang(this.homeLink, url));
-
+      console.log(this.langKey)
+      console.log(this.homeLink)
+      console.log('url => ', url);
       // get the appropriate message file based on langKey
       // at the moment this assumes that langKey will provide us
       // with the appropriate language code
